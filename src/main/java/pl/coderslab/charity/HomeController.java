@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.coderslab.charity.Institution.Institution;
-import pl.coderslab.charity.Institution.InstitutionRepository;
+import pl.coderslab.charity.institution.Institution;
+import pl.coderslab.charity.institution.InstitutionRepository;
 import pl.coderslab.charity.donation.DonationRepository;
 
 import java.util.List;
@@ -22,9 +22,11 @@ public class HomeController {
     @RequestMapping("/")
     public String homeAction(Model model){
         List<Institution> institutionList = institutionRepository.findAll();
-        int quantitySum = donationRepository.quantitySumQuery();
+        long quantityOfBags = donationRepository.quantityOfBagsQuery();
+        long quantityOfDonations = donationRepository.count();
         model.addAttribute("institutions", institutionList);
-        model.addAttribute("quantity", quantitySum);
+        model.addAttribute("quantityOfBags", quantityOfBags);
+        model.addAttribute("quantityOfDonations", quantityOfDonations);
         return "index";
     }
 }

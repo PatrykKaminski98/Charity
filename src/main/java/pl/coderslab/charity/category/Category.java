@@ -1,4 +1,4 @@
-package pl.coderslab.charity.Institution;
+package pl.coderslab.charity.category;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,10 +11,9 @@ import javax.persistence.Id;
 @Entity
 @Setter
 @Getter
-public class Institution {
+public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     private String name;
-    private String description;
 }
