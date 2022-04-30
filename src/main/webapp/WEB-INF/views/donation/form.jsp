@@ -65,9 +65,8 @@
                         <span class="checkbox"></span>
                         <span class="description">${category.name}</span>
                     </div>
-
                 </c:forEach>
-
+                <p id="categoriesError"></p>
 
                 <div class="form-group form-group--buttons">
                 <button type="button" class="btn next-step">Dalej</button>

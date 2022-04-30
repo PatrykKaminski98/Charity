@@ -1,11 +1,12 @@
-document.getElementById("summary").addEventListener("click", summaryForm);
+$(document).ready(function(){
+    $("#summary").click(summaryForm);
+})
 function summaryForm(){
     // categories
     const checkboxes= Array.from(document.querySelectorAll("#checkbox"));
     const selectedCheckboxes = checkboxes.filter(function(element){
         return element.firstElementChild.checked;
     })
-    console.log(selectedCheckboxes)
     let categoriesString = "";
     selectedCheckboxes.forEach(function(element, index, array){
         categoriesString += element.children[3].innerText;
