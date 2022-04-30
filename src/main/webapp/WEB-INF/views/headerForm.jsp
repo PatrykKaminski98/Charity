@@ -12,7 +12,7 @@
     <script src=<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"/>></script>
 </head>
 <body>
-<header class="header--main-page">
+<header class="header--form-page">
     <nav class="container container--70">
         <ul class="nav--actions">
             <li><a href="" class="btn btn--small btn--without-border">Zaloguj</a></li>
