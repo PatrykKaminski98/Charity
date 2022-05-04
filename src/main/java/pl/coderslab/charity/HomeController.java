@@ -16,7 +16,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@Secured("ROLE_USER")
+@Secured({"ROLE_USER", "ROLE_ADMIN"})
 public class HomeController {
 
     private InstitutionRepository institutionRepository;
@@ -24,8 +24,7 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String homeAction(@AuthenticationPrincipal CurrentUser currentUser, Model model){
-        System.out.println(currentUser.getUser().getUsername());
+    public String homeAction(Model model){
         List<Institution> institutionList = institutionRepository.findAll();
         long quantityOfBags = donationRepository.quantityOfBagsQuery();
         long quantityOfDonations = donationRepository.count();

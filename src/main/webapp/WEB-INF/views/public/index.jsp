@@ -88,8 +88,8 @@
                 <li>
                 </c:if>
                     <div class="col">
-                        <div class="title">Fundacja "${institution.name}m"</div>
-                        <div class="subtitle">Cel i misja: ${institution.description}m</div>
+                        <div class="title">Fundacja "${institution.name}"</div>
+                        <div class="subtitle">Cel i misja: ${institution.description}</div>
                     </div>
                 <c:if test="${varStatus.count%2==0}">
                     </li>

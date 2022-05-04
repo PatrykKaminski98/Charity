@@ -1,7 +1,6 @@
 package pl.coderslab.charity;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -11,7 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import pl.coderslab.charity.account.login.CustomAuthenticationFailureHandler;
 import pl.coderslab.charity.account.user.UserService;
 
 @Configuration
@@ -22,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserService userService;
     private final BCryptPasswordEncoder passwordEncoder;
-    private final  CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+    private final CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
 
     @Override

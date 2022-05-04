@@ -17,7 +17,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/donation")
 @AllArgsConstructor
-@Secured("ROLE_USER")
+@Secured({"ROLE_USER", "ROLE_ADMIN"})
 public class DonationController {
 
     private final InstitutionRepository institutionRepository;

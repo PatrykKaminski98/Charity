@@ -1,4 +1,4 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.account.login;
 
 
 import org.springframework.security.authentication.BadCredentialsException;
