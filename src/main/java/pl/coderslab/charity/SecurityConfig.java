@@ -21,32 +21,35 @@ import pl.coderslab.charity.account.user.UserService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserService userService;
-
     private final BCryptPasswordEncoder passwordEncoder;
-
-    private final CustomAuthenticationProvider customAuthenticationProvider;
+    private final  CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                    .antMatchers("/donation/**").authenticated()
-                    .and()
+        .authorizeRequests()
+                .antMatchers("/public/**").permitAll()
+                //.antMatchers("/donation/**").hasAnyRole("ADMIN", "USER")
+                //.anyRequest().authenticated()
+                .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/")  // musi być
-                    .failureHandler(myAuthenticationFailureHandler())
-                .and().logout().logoutSuccessUrl("/login")
-                .invalidateHttpSession(true)
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+                .failureHandler(customAuthenticationFailureHandler)
+                .permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/")
+                .permitAll()
+                .invalidateHttpSession(false)
                 .deleteCookies("JSESSIONID");
 
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //auth.authenticationProvider(daoAuthenticationProvider());
-        auth.authenticationProvider(customAuthenticationProvider);
+        auth.authenticationProvider(daoAuthenticationProvider());
+        //auth.authenticationProvider(customAuthenticationProvider);
     }
 
     @Bean
@@ -58,8 +61,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
-    @Autowired
-    private AuthenticationFailureHandler myAuthenticationFailureHandler(){
-        return new CustomAuthenticationFailureHandler();
-    }
 }

@@ -2,7 +2,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="/public/header.jsp"/>
+<jsp:include page="header.jsp"/>
 
     <div class="slogan container container--90">
         <div class="slogan--item">
@@ -99,6 +99,10 @@
     </div>
 
 </section>
+<form action="<c:url value="/logout"/>" method="post">
+    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 
 <jsp:include page="footer.jsp"/>
 

@@ -1,9 +1,12 @@
 package pl.coderslab.charity;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.charity.account.user.CurrentUser;
 import pl.coderslab.charity.institution.Institution;
 import pl.coderslab.charity.institution.InstitutionRepository;
 import pl.coderslab.charity.donation.DonationRepository;
@@ -13,6 +16,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@Secured("ROLE_USER")
 public class HomeController {
 
     private InstitutionRepository institutionRepository;
@@ -20,7 +24,8 @@ public class HomeController {
 
 
     @RequestMapping("/")
-    public String homeAction(Model model){
+    public String homeAction(@AuthenticationPrincipal CurrentUser currentUser, Model model){
+        System.out.println(currentUser.getUser().getUsername());
         List<Institution> institutionList = institutionRepository.findAll();
         long quantityOfBags = donationRepository.quantityOfBagsQuery();
         long quantityOfDonations = donationRepository.count();

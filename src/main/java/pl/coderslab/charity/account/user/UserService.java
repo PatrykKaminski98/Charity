@@ -22,19 +22,14 @@ public class UserService implements UserDetailsService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException, InternalAuthenticationServiceException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email).orElseThrow( () -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
-
-        /*if(!user.isEnabled()){
-            throw new InternalAuthenticationServiceException("uzytkownik zablokowany");
-        }*/
-
-
+        System.out.println("loaded");
         return new CurrentUser(user.getUsername(), user.getPassword(), user.isEnabled(), user.isAccountNonExpired(), user.isCredentialsNonExpired(), user.isAccountNonLocked(), user.getAuthorities(), user);
     }
 
     public String signUpUser(User user) {
-        if(userRepository.findByEmail(user.getEmail()) != null) {
+        if(userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new IllegalArgumentException("email already exists");
         }
 
@@ -56,4 +51,6 @@ public class UserService implements UserDetailsService {
 
         return "token";
     }
+
+
 }
