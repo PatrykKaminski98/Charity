@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="../headerForm.jsp"/>
+<jsp:include page="../public/headerForm.jsp"/>
 <div class="slogan container container--90">
     <div class="slogan--item">
         <h1>
@@ -227,5 +227,5 @@
 <script type="text/javascript" src=<c:url value="/resources/js/summaryForm.js"/>></script>
 
 
-<jsp:include page="../footer.jsp"/>
+<jsp:include page="../public/footer.jsp"/>
 

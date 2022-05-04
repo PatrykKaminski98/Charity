@@ -27,6 +27,6 @@ public class HomeController {
         model.addAttribute("institutions", institutionList);
         model.addAttribute("quantityOfBags", quantityOfBags);
         model.addAttribute("quantityOfDonations", quantityOfDonations);
-        return "index";
+        return "/public/index";
     }
 }
