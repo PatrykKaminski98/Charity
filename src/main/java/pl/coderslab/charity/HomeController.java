@@ -1,6 +1,7 @@
 package pl.coderslab.charity;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +14,11 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@Secured({"ROLE_USER", "ROLE_ADMIN"})
 public class HomeController {
 
     private InstitutionRepository institutionRepository;
     private DonationRepository donationRepository;
-
 
     @RequestMapping("/")
     public String homeAction(Model model){

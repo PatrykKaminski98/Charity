@@ -1,12 +1,12 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.account.login;
 
 
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
-import pl.coderslab.charity.account.user.UserDisabledException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
         if(exception instanceof BadCredentialsException || exception instanceof UsernameNotFoundException){
             request.setAttribute("invalidCredentials", true);
         }
-        if(exception instanceof UserDisabledException){
+        if(exception instanceof DisabledException){
             request.setAttribute("userDisabled", true);
         }
         request.getRequestDispatcher("/login").forward(request, response);

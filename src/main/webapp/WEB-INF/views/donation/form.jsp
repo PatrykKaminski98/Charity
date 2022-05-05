@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="../public/headerForm.jsp"/>
+<jsp:include page="../public/headerLoggedIn.jsp"/>
 <div class="slogan container container--90">
     <div class="slogan--item">
         <h1>

@@ -2,7 +2,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="/public/header.jsp"/>
+<jsp:include page="header.jsp"/>
 
     <div class="slogan container container--90">
         <div class="slogan--item">
@@ -88,8 +88,8 @@
                 <li>
                 </c:if>
                     <div class="col">
-                        <div class="title">Fundacja "${institution.name}m"</div>
-                        <div class="subtitle">Cel i misja: ${institution.description}m</div>
+                        <div class="title">Fundacja "${institution.name}"</div>
+                        <div class="subtitle">Cel i misja: ${institution.description}</div>
                     </div>
                 <c:if test="${varStatus.count%2==0}">
                     </li>
@@ -99,6 +99,10 @@
     </div>
 
 </section>
+<form action="<c:url value="/logout"/>" method="post">
+    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 
 <jsp:include page="footer.jsp"/>
 
