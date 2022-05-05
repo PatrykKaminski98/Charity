@@ -5,6 +5,11 @@
 <section class="login-page">
     <h2>Zaloguj się</h2>
     <form method="post">
+        <c:if test="${confirmationSuccess}">
+            <div class="ui-state-error-text">
+                Email został potwierdzony. Możesz sie teraz zalogować<br>
+            </div>
+        </c:if>
         <div class="form-group">
             <input type="email" name="username" placeholder="Email" />
         </div>

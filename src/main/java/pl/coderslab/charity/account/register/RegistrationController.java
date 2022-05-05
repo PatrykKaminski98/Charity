@@ -2,16 +2,16 @@ package pl.coderslab.charity.account.register;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @Controller
 @AllArgsConstructor
+
 public class RegistrationController {
 
     private final RegistrationService registrationService;
@@ -40,5 +40,12 @@ public class RegistrationController {
         }
 
         return "redirect:/login";
+    }
+
+    @GetMapping(path = "/register/confirm")
+    public String confirm(@RequestParam("token") String token, Model model) {
+        registrationService.confirmToken(token);
+        model.addAttribute("confirmationSuccess", true);
+        return "/public/login";
     }
 }

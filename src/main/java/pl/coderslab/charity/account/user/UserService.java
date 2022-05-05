@@ -10,6 +10,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.account.register.token.ConfirmationToken;
+import pl.coderslab.charity.account.register.token.ConfirmationTokenService;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +23,7 @@ public class UserService implements UserDetailsService {
             "user with email %s not found";
 
     private final UserRepository userRepository;
+    private final ConfirmationTokenService confirmationTokenService;
 
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -38,7 +44,6 @@ public class UserService implements UserDetailsService {
 
         userRepository.save(user); //registration complete
 
-        /* here start of confirmation token
         String token = UUID.randomUUID().toString();
         ConfirmationToken confirmationToken = new ConfirmationToken(
                 token,
@@ -47,9 +52,12 @@ public class UserService implements UserDetailsService {
                 user
         );
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-        */
 
-        return "token";
+        return token;
+    }
+
+    public int enableUser(String email) {
+        return userRepository.enableUser(email);
     }
 
 
