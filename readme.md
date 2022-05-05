@@ -58,16 +58,11 @@ Now we can log in and use the application! ;)
 
 To use the version with email verification, you must set up the email configuration.
 The default configuration is for Gmail
-![Example screenshot](./img/mailConfiguration.png)
-We can change it in class
-`src/main/java/pl/coderslab/account/email/MailConfiguration.java`
 
-And in class
-`src/main/java/pl/coderslab/account/email/MailAuthenticator.java`
-
+We can change it in file:
+`src/main/resources/application.properties`
+![Example screenshot]
 should enter authentication to email
-![Example screenshot](./img/mailAuthentication.png)
-
 Now everythink is fine. U can register new users by form and confirm their account by clicking in link in email
 
 
