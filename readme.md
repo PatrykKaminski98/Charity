@@ -62,9 +62,8 @@ The default configuration is for Gmail
 We can change it in file:
 `src/main/resources/application.properties`
 ![Example screenshot](./img/mailConfiguration.png)
-should enter authentication to email
-Now everythink is fine. U can register new users by form and confirm their account by clicking in link in email
 
+Now everythink is fine. U can register new users by form and confirm their account by clicking in link in email
 
 ## Project Status
 Project is: in progress
