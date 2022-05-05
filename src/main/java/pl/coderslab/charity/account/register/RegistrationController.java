@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.charity.account.user.User;
+import pl.coderslab.charity.account.user.UserRole;
+import pl.coderslab.charity.account.user.UserService;
 
 import javax.validation.Valid;
 
@@ -15,6 +18,8 @@ import javax.validation.Valid;
 public class RegistrationController {
 
     private final RegistrationService registrationService;
+
+    private final UserService userService;
 
     @ModelAttribute("userDto")
     UserDto userDto(){
@@ -47,5 +52,17 @@ public class RegistrationController {
         registrationService.confirmToken(token);
         model.addAttribute("confirmationSuccess", true);
         return "/public/login";
+    }
+
+    @GetMapping("/create-admin")
+    @ResponseBody
+    public String createAdmin() {
+        User user = new User();
+        user.setPassword("admin");
+        user.setEmail("admin@charity.pl");
+        user.setEnabled(true);
+        user.setUserRole(UserRole.ROLE_ADMIN);
+        userService.signUpUser(user);
+        return "Admin has been created<br>email:admin@charity.pl<br>password:admin";
     }
 }
