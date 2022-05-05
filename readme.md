@@ -53,9 +53,6 @@ password: admin
 
 Now we can log in and use the application! ;)
 
-
-`write-your-code-here`
-
 To use the version with email verification, you must set up the email configuration.
 The default configuration is for Gmail
 
