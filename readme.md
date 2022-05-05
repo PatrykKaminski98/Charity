@@ -68,12 +68,3 @@ Now everythink is fine. U can register new users by form and confirm their accou
 
 ## Project Status
 Project is: in progress
-
-
-## Room for Improvement
-To do:
-- saving user weight
-- virtual fridge (suggesting meals based on the ingredients in fridge)
-
-## Contact
-Linkedin
