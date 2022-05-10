@@ -32,8 +32,8 @@
                     <li>
                     </li>
                     <sec:authorize access="hasRole('ADMIN')">
-                    <li><a href="/admin/list"><div style="padding: 15px">Zarządzaj administratorami</div></a></li>
-                    <li><div style="padding: 15px">Zarządzaj użytkownikami</div></li>
+                        <li><a href="/admin/listOfAdmins"><div style="padding: 15px">Zarządzaj administratorami</div></a></li>
+                        <li><a href="/admin/listOfUsers"><div style="padding: 15px">Zarządzaj użytkownikami</div></a></li>
                     </sec:authorize>
                 </ul>
             </li>

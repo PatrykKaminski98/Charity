@@ -3,6 +3,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authentication property="principal.username" var="user"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,16 +25,18 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${admins}" var="admin">
+        <c:forEach items="${users}" var="user">
         <tr>
-            <td>${admin.id}</td>
-            <td>${admin.email}</td>
-            <td><a href="/admin/delete/${admin.id}"><span id="delete" class="icon-minus"/></a></td>
-            <td><a href="/admin/edit/${admin.id}"><span class="icon-settings"/></a></td>
+            <td>${user.id}</td>
+            <td>${user.email}</td>
+            <td><a href="/admin/deleteUser/${user.id}"><span id="delete" class="icon-minus"/></a></td>
+            <td><a href="/admin/editUser/${user.id}"><span class="icon-settings"/></a></td>
+
         </tr>
         </c:forEach>
         <tbody>
     </table>
+    <a href="/"><button>Powrót</button></a>
 </div>
 <script  type="text/javascript">
     $("#delete").click(function(event){
